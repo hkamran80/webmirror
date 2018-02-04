@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>WebMirror: Weather</title>
+
+		<link rel="stylesheet" href="https://w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			.w3-container .top-info_div {
+				font-family: 'Bungee', cursive;
+				font-size: 20px;
+			}
+
+			body {
+				background-color: #000000;
+				color: #FFFFFF;
+			}
+
+			span {
+				font-size: 32px;
+			}
+
+			a:link {
+				text-decoration: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="scripting">
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+			<script>
+				jQuery(document).ready(function($) {
+					$.ajax({
+					url : "http://api.wunderground.com/api/314bd4c577127ae3/geolookup/conditions/q/CA/Lafayette.json",
+					dataType : "jsonp",
+					success : function(parsed_json) {
+					var city = parsed_json['location']['city'];
+					var state = parsed_json['location']['state'];
+
+					var temp_f = parsed_json['current_observation']['temp_f'];
+
+					var locX = city + ', ' + state;
+					var tempX = temp_f + '&deg;F';
+
+					document.getElementById("city").innerHTML = locX;
+					document.getElementById("temp").innerHTML = tempX;
+					}
+					});
+				});
+
+				var timer = setInterval(weathery, 900000);
+
+				function weathery() {
+					jQuery(document).ready(function($) {
+						$.ajax({
+						url : "http://api.wunderground.com/api/314bd4c577127ae3/geolookup/conditions/q/CA/Lafayette.json",
+						dataType : "jsonp",
+						success : function(parsed_json) {
+						var city = parsed_json['location']['city'];
+						var state = parsed_json['location']['state'];
+
+						var temp_f = parsed_json['current_observation']['temp_f'];
+
+						var locX = city + ', ' + state;
+						var tempX = temp_f + '&deg;F';
+
+						document.getElementById("city").innerHTML = locX;
+						document.getElementById("temp").innerHTML = tempX;
+						}
+						});
+					});
+				}
+			</script>
+		</div>
+		<div class="w3-container">
+			<a href="index.html">
+				<div id="current_weather" class="w3-left top-info_div">
+					<span id="temp"></span>
+						<br>
+					<span id="city"></span>
+					<!-- Example Temperature -->
+				</div>
+			</a>
+		</div>
+	</body>
+</html>
