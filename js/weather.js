@@ -1,6 +1,10 @@
 jQuery(document).ready(function($) {
 	$.ajax({
-	url : "http://api.wunderground.com/api/314bd4c577127ae3/geolookup/conditions/q/CA/Lafayette.json",
+	
+	var key = "";
+	var stateinitials = "";
+	var weather_city = "";
+	url : "http://api.wunderground.com/api/" + key + "/geolookup/conditions/q/" + stateinitials + "/" + weather_city + ".json",
 	dataType : "jsonp",
 	success : function(parsed_json) {
 	var city = parsed_json['location']['city'];
