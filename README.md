@@ -2,5 +2,4 @@
 A smart mirror, on the Web.
 
 # How to Use
-(NOT ACTIVE) 
-Simply visit <a href="http://unisontech.org/webmirror">unisontech.org/webmirror</a> to run. (You have to supply your own Weather Underground API Key, and weather location.
+You need to get a Weather Underground API key, and your state's initials, and your city (if your city has a space, like San Francisco , under the "city" variable, type <code>var city = "San_Francisco"</code>
